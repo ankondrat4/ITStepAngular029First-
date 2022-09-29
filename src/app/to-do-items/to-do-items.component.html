@@ -1,0 +1,38 @@
+<p [ngClass]="{invisible:!visibility}" [ngStyle]="{'font-size':'14px', 'font-family':'Verdana'}">to-do-items works!</p>
+
+<div *ngIf="selectedItem">
+  <h2>{{selectedItem.name}} Details</h2>
+  <form #selectedForm="ngForm">
+    <div>
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" name="name" [(ngModel)]="selectedItem.name" required>
+    </div>
+    <div>
+      <label for="isComplete">Completed:</label>
+      <input type="checkbox" id="isComplete" name="completed" [(ngModel)]="selectedItem.isComplete">
+    </div>
+  </form>
+  <div><span>id: </span>{{selectedItem.id}}</div>
+  <div><span>name: </span>{{selectedItem.name}}</div>
+  <div><span>is complete: </span>{{selectedItem.isComplete}}</div>
+</div>
+
+<h2>My list</h2>
+<ul class="items">
+  <li *ngFor="let item of items"
+      (click)="onSelect(item)"
+      [class.selected] = "item === selectedItem"
+  >
+    {{item.name}}
+  </li>
+</ul>
+
+<div class="counter" *ngIf="items.length > 0">
+  {{items.length}} {{items.length == 1 ? "item" : "items"}}
+</div>
+
+<div [ngSwitch]="items.length">
+  <p *ngSwitchCase="0"> You dont have items!</p>
+  <p *ngSwitchCase="1"> You have one item!</p>
+  <p *ngSwitchDefault> You have many items!</p>
+</div>

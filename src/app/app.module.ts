@@ -1,14 +1,20 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule} from "@angular/forms";
 
 import { AppComponent } from './app.component';
+import { ToDoItemsComponent } from './to-do-items/to-do-items.component';
+import { PipesTestComponent } from './pipes-test/pipes-test.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ToDoItemsComponent,
+    PipesTestComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
